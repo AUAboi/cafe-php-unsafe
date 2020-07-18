@@ -111,7 +111,7 @@ $res = mysqli_query($conn, $sql);
                 
                 <td class="text-center">
                     <span class="mr-2 p-1 rounded-md bg-yellow-400">
-                        <a href='editCategories.php?id=<?php echo $row['id'] ?>'>Edit</a>
+                        <a href='editCategories.php?id=<?php echo $row['id']?>&&catname=<?php echo $row['category'] ?>'>Edit</a>
                     </span>
                     <span class="mr-2 p-1 rounded-md bg-red-400">
                         <a href="?id=<?php echo $row['id']?>&action=delete">Delete</a>
