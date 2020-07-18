@@ -1,0 +1,51 @@
+html {
+  height: 100%;
+}
+
+.text-8xl {
+  font-size: 7rem;
+}
+
+.active-page {
+  background-color: #c05621;
+  color: #feebc8;
+}
+
+.burger {
+  margin: auto 1rem;
+  cursor: pointer;
+}
+
+.line {
+  margin: 3px;
+  width: 20px;
+  height: 3px;
+  background-color: black;
+}
+
+.right-5 {
+  right: 1.4rem;
+}
+
+.nav-bar {
+  transform: translateX(-100%);
+  transition: all 0.5s ease-in-out;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 45.4px;
+  z-index: 999;
+}
+
+.slide {
+  transform: translateX(0%);
+}
+
+.modal-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: fit-content;
+  padding: 1.5rem;
+}

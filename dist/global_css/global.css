@@ -1,0 +1,12 @@
+:root {
+  --primary-color: #ec7c32;
+  --light-color: #7b9e89;
+}
+
+.bg-orange {
+  background-color: var(--primary-color);
+}
+
+.bg-light-color {
+  background-color: var(--light-color);
+}

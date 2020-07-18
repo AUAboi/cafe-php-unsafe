@@ -1,0 +1,36 @@
+.burger {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+}
+
+.line {
+  width: 20px;
+  height: 2px;
+  margin: 5px;
+  transition: all 0.5s ease;
+}
+
+@media screen and (max-width: 639px) {
+  .nav-links {
+    display: none;
+    transform: translateY(-600%);
+  }
+
+  .order-button {
+    display: none;
+    transform: translateY(-600%);
+    margin: 20px;
+  }
+
+  .active {
+    display: block;
+    animation: slideOut 250ms forwards;
+  }
+
+  @keyframes slideOut {
+    to {
+      transform: translateY(0%);
+    }
+  }
+}
