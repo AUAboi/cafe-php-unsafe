@@ -31,7 +31,7 @@
                 } else {
                     mysqli_stmt_bind_param($stmt, "ss", $catName, $added_on);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../addCategories.php?status=successfull");
+                    header("Location: ../addCategories.php?status=successful");
                     exit();
                 }
             }

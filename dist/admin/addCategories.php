@@ -8,10 +8,10 @@ if(isset($_GET['error'])) {
 }
 
 if(isset($_GET['status'])) {
-    if($_GET['status'] == 'successfull') {
+    if($_GET['status'] == 'successful') {
         $msg = "Category Added Successfully";
     } else {
-        $msg = "Some error occured please try again!";
+        $msg = "Some error occurred please try again!";
     }
 }
 ?>
