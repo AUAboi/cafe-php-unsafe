@@ -42,6 +42,9 @@ $res = mysqli_query($conn, $sql);
                 <i class="fas fa-plus"></i>
                 Add Categories
             </a>
+            <div class="text-right">
+                <input type="text" id="search-bar" onkeyup="search()" placeholder="Search for names..">
+            </div>
         </div>
     </div>
     <div class="mt-4 shadow-lg">
@@ -64,7 +67,7 @@ $res = mysqli_query($conn, $sql);
             }
         }
     ?>
-        <table class="table bg-white w-full p-3">
+        <table  id="table-main" class="table bg-white w-full p-3">
 
             <thead>
             <tr class="m-2 p-2 border-b-2">
@@ -83,7 +86,7 @@ $res = mysqli_query($conn, $sql);
             ?>
             <tr class="leading-9">
                 <td class="text-center p-2"><?php echo $i?></td>
-                <td class="text-center p-2"><?php echo $row['category']?></td>
+                <td class="text-center p-2" id="row-name"><?php echo $row['category']?></td>
                 <td class="text-center p-3">
                     <?php 
                         $status = $row['status'];

@@ -17,6 +17,10 @@ if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Dashboard';
 } else if($currentPath = 'categories.php' || $currentPath = 'addCategories.php' || $currentPath = 'editCategories.php') {
   $pageTitle = 'Categories Management';
+} else if ($currentPath = 'dish.php') {
+  $pageTitle = 'Dish Management';
+} else if ($currentPath = 'orders.php') {
+  $pageTitle = 'Order Master';
 }
 ?>
 
@@ -69,12 +73,12 @@ if($currentPath == '' || $currentPath == 'index.php') {
         >Catagories</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200"
+        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dish Management"){ echo "active-page";} ?>"
         href="products.php"
         >Products</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200"
+        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Order Master"){ echo "active-page";} ?>"
         href="orders.php"
         >Order Master</a
       >
