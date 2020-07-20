@@ -37,14 +37,12 @@ $res = mysqli_query($conn, $sql);
 <main class="sm:ml-48 mx-3 sm:mr-6 mt-4 relative">
     <div class="container bg-white p-5 shadow-lg">
         <p class="text-center text-2xl md:text-3xl font-extrabold m-2">Categories</p>
-        <div>
+        <div class="flex justify-between">
             <a class="p-1 sm:p-2 bg-green-400 text-xs sm:text-sm md:text-lg" href="addCategories.php">
                 <i class="fas fa-plus"></i>
                 Add Categories
             </a>
-            <div class="text-right">
-                <input type="text" id="search-bar" onkeyup="search()" placeholder="Search for names..">
-            </div>
+            <input type="text" id="search-bar" class="" onkeyup="search()" placeholder="Search for names..">
         </div>
     </div>
     <div class="mt-4 shadow-lg">
