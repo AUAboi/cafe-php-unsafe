@@ -15,11 +15,11 @@ $pageTitle = '';
 
 if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Dashboard';
-} else if($currentPath = 'categories.php' || $currentPath = 'addCategories.php' || $currentPath = 'editCategories.php') {
+} else if($currentPath == 'categories.php' || $currentPath == 'addCategories.php' || $currentPath == 'editCategories.php') {
   $pageTitle = 'Categories Management';
-} else if ($currentPath = 'user.php') {
+} else if ($currentPath == 'user.php') {
   $pageTitle = 'User Master';
-} else if ($currentPath = 'orders.php') {
+} else if ($currentPath == 'orders.php') {
   $pageTitle = 'Order Master';
 } else {
   $pageTitle = 'invalid page';
@@ -34,16 +34,21 @@ if($currentPath == '' || $currentPath == 'index.php') {
     <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/custom.css" />
     <link rel="stylesheet" href="../global_css/global.css">
     <script
       src="https://kit.fontawesome.com/294f177ac8.js"
       crossorigin="anonymous"
     ></script>
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
     <title><?php echo $pageTitle ?></title>
   </head>
   <body class="h-full bg-gray-300">
-    <header class="flex justify-between bg-orange-200 shadow-lg z-30">
+    <header class="flex justify-between bg-orange-200 shadow-lg z-30 sticky top-0">
       <div class="burger" onclick="slideIn()">
         <div class="line"></div>
         <div class="line"></div>
@@ -63,7 +68,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
         </form>
       </div>
     </header>
-    <nav class="h-screen p-0 w-screen text-center sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner" >
+    <nav class="h-full p-0 w-screen text-center sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner" >
       <a
         class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dashboard"){ echo "active-page";} ?>"
         href="index.php"

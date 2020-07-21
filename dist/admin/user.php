@@ -1,3 +1,11 @@
-<?php include "layout/header.php" ?>
+<?php 
+include_once "layout/header.php";
+?>
 
-<?php include "layout/footer.php" ?>
+<main>
+    <h1>This is The USers page</h1>
+</main>
+
+<?php
+include_once "layout/footer.php" 
+?>

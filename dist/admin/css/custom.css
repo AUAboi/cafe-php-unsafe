@@ -41,6 +41,17 @@ html {
   transform: translateX(0%);
 }
 
+/* .dataTables_wrapper {
+  background-color: white;
+  box-shadow: 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.dataTables_paginate a {
+  padding: 4px 6px;
+} */
+
 .modal-box {
   position: absolute;
   left: 50%;
@@ -49,3 +60,9 @@ html {
   height: fit-content;
   padding: 1.5rem;
 }
+
+/* @media screen and (max-width: 639px) {
+  .dataTables_wrapper {
+    padding: 0.4rem;
+  }
+} */
