@@ -3,6 +3,12 @@
   --light-color: #7b9e89;
 }
 
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
 .bg-orange {
   background-color: var(--primary-color);
 }

@@ -34,9 +34,9 @@ if($currentPath == '' || $currentPath == 'index.php') {
     <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts.css">
+    <link rel="stylesheet" href="../global_css/global.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/custom.css" />
-    <link rel="stylesheet" href="../global_css/global.css">
     <script
       src="https://kit.fontawesome.com/294f177ac8.js"
       crossorigin="anonymous"

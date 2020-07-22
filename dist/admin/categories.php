@@ -65,14 +65,14 @@ $res = mysqli_query($conn, $sql);
             }
         }
     ?>
-        <table  id="table-main" class="table bg-white w-full p-3">
+        <table  id="table-main" class="table bg-white w-full mt-4 table-fixed sm:text-lg text-xs">
 
             <thead>
             <tr class="m-2 p-2 border-b-2">
-                <th width="10%" class="m-2 p-2">ID</th>
-                <th width="50%" class="m-2 p-2">Categories</th>
-                <th width="10%" class="m-2 p-2 right-align">Status</th>
-                <th width="30%" class="m-2 p-2 ">Actions</th>
+                <th class="m-2 p-2">ID</th>
+                <th class="m-2 p-2">Categories</th>
+                <th class="m-2 p-2 sm:right-align">Status</th>
+                <th class="m-2 p-2 ">Actions</th>
             </tr>
             </thead>
             <tbody>
