@@ -35,7 +35,7 @@ $res = mysqli_query($conn, $sql);
 
 ?>
 <main class="sm:ml-48 mx-3 sm:mr-6 mt-4 relative">
-    <div class="container bg-white p-5 shadow-lg">
+    <div class="bg-white p-5 shadow-lg w-full">
         <p class="text-center text-2xl md:text-3xl font-extrabold m-2">Categories</p>
         <div>
             <a class="p-1 sm:p-2 bg-green-400 text-xs sm:text-sm md:text-lg" href="addCategories.php">

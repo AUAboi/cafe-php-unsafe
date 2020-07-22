@@ -61,7 +61,9 @@ label select {
   padding: 4px 6px;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   background-color: rgb(255, 188, 100);
   background: rgb(255, 188, 100);
 }
