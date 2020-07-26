@@ -1,5 +1,6 @@
 :root {
-  --primary-color: #ec7c32;
+  /* --primary-color: #ec7c32; */
+  --primary-color: rgb(239,169,27);
   --light-color: #7b9e89;
 }
 

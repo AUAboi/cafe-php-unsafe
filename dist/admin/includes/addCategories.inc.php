@@ -1,6 +1,6 @@
 <?php   
     if(isset($_POST['submit']) && $_POST['name'] !== '') {
-        include "connection.inc.php";
+        require "connection.inc.php";
         $catName = $_POST['name'];
 
         $sql = "SELECT * FROM category WHERE category=?";
@@ -36,7 +36,10 @@
                 }
             }
         }
+        mysqli_stmt_close($stmt);
+        mysqli_close($conn);
     } else {
         header('Location: ../addCategories.php');
+        exit();
     }
 ?>

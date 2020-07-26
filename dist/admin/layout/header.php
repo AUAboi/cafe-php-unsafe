@@ -3,7 +3,7 @@ session_start();
 include "includes/connection.inc.php";
 require_once "login/authCookieSessionValidate.php";
 
-if(!$isLoggedIn) {
+if(!$isLoggedIn && $_SESSION['userUId']) {
     header("Location: login.php?error=notloggedin");
 }
 
@@ -19,6 +19,8 @@ if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Categories Management';
 } else if ($currentPath == 'user.php') {
   $pageTitle = 'User Master';
+} else if ($currentPath == 'deliveryGuy.php') {
+  $pageTitle = 'Delivery Boy Management';
 } else if ($currentPath == 'orders.php') {
   $pageTitle = 'Order Master';
 } else {
@@ -68,7 +70,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
         </form>
       </div>
     </header>
-    <nav class="h-full p-0 w-screen text-center sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner" >
+    <nav class="h-full p-0 w-screen text-center sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner transform -translate-x-full sm:translate-x-0" >
       <a
         class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dashboard"){ echo "active-page";} ?>"
         href="index.php"
@@ -83,6 +85,11 @@ if($currentPath == '' || $currentPath == 'index.php') {
         class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "User Master"){ echo "active-page";} ?>"
         href="user.php"
         >Users Master</a
+      >
+      <a
+        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Delivery Boy Management"){ echo "active-page";} ?>"
+        href="deliveryGuy.php"
+        >Delivery Boy Management</a
       >
       <a
         class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Order Master"){ echo "active-page";} ?>"
