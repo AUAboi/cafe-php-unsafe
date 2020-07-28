@@ -3,8 +3,8 @@ session_start();
 include "includes/connection.inc.php";
 require_once "login/authCookieSessionValidate.php";
 
-if(!$isLoggedIn && $_SESSION['userUId']) {
-    header("Location: login.php?error=notloggedin");
+if(!$isLoggedIn && !isset($_SESSION['userUId'])) {
+  header("Location: login.php?error=notloggedin");
 }
 
 $username = $_SESSION['userUId'];

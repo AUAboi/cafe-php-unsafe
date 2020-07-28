@@ -7,9 +7,10 @@ if(isset($_GET['id']) && $_GET['id'] !== '' && $_GET['id'] > 0) {
         $name = $_GET['name'];
     }
 
-    if(isset($_GET['mobile'])){
-        $name = $_GET['name'];
+    if(isset($_GET['contact'])){
+        $mobile = $_GET['contact'];
     }
+
 } else {
     header("Location: deliveryGuy.php");
     exit();
@@ -24,6 +25,7 @@ if(isset($_GET['id']) && $_GET['id'] !== '' && $_GET['id'] > 0) {
     <form class="text-center text-lg mt-3 bg-white shadow-lg" method="post" action="includes/editDeliveryBoy.inc.php">
         <label class="m-3 p-2 text-2xl" for="name">Name</label><br>
         <input class="m-3 p-2 rounded-md bg-gray-200" type="text" value="<?php if(isset($name)){ echo $name ;}?>" placeholder="Write Name" name="name"><br>
+        <label class="m-3 p-2 text-2xl" for="contact">Contact</label><br>
         <input class="m-3 p-2 rounded-md bg-gray-200" type="text" value="<?php if(isset($mobile)){ echo $mobile ;}?>" placeholder="Write Contact Number" name="mobile"><br>
         <input type = "hidden" name = "id" value = "<?php if(isset($id)){ echo $id ;}?>"/>
         <input class="m-3 p-2 cursor-pointer bg-orange-400 rounded-md" type="submit" name="submit">

@@ -1,16 +1,20 @@
 <?php 
 include_once "layout/header.php";
+$error = false;
 
 if(isset($_GET['error'])) {
     if($_GET['error'] == 'catalreadyexists') {
+        $error = true;
         $msg = 'Category Already Exists';
     }
 }
 
 if(isset($_GET['status'])) {
     if($_GET['status'] == 'successful') {
+        $error = false;
         $msg = "Category Added Successfully";
     } else {
+        $error = true;
         $msg = "Some error occurred please try again!";
     }
 }
@@ -27,7 +31,7 @@ if(isset($_GET['status'])) {
         <label class="m-3 p-2 text-2xl" for="name">Category Name</label><br>
         <input class="m-3 p-2 rounded-md bg-gray-200" type="text" placeholder="Write Name for Category" name="name"><br>
         <input class="m-3 p-2 cursor-pointer bg-orange-400 rounded-md" type="submit" name="submit">
-        <div class="p-2">
+        <div class="p-2 <?php if($error){ echo "text-red-400" ;} else { echo "text-green-400" ;} ?>">
             <?php if(isset($msg)){
                 echo $msg;
             }
