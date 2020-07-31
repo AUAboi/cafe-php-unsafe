@@ -15,7 +15,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 	}
 }
 
-$sql = "SELECT * FROM user ORDER BY id DESC";
+$sql = "SELECT * FROM user";
 $res = mysqli_query($conn, $sql);
 
 ?>
@@ -23,16 +23,22 @@ $res = mysqli_query($conn, $sql);
     <div class="bg-white p-5 shadow-lg w-full">
         <p class="text-center text-2xl md:text-3xl font-extrabold m-2">Users Master</p>
     </div>
-    <div class="mt-4 shadow-lg">
-        <table  id="table-main" class="table bg-white w-full mt-4 table-fixed sm:text-lg text-xs">
-            <thead>
-            <tr class="m-2 p-2 border-b-2 font-bold">
-                <th class="m-2 p-2">ID</th>
-                <th class="m-2 p-2">Name</th>
-                <th class="m-2 p-2 sm:right-align">Email</th>
-                <th class="m-2 p-2 ">Mobile</th>
-                <th class="m-2 p-2 ">Status</th>
-            </tr>
+    <div class="mt-4 shadow-lg bg-white table-responsive p-2">
+        <table 
+            id="table-main" 
+            data-toggle="table"
+            data-pagination="true"
+            data-search="true"
+            class="table text-xs sm:text-lg"
+        >
+            <thead class="thead-dark">
+                <tr>
+                    <th data-sortable="true" data-field="id">ID</th>
+                    <th data-sortable="true" data-field="name">Name</th>
+                    <th data-field="email">Email</th>
+                    <th data-field="mobile">Mobile</th>
+                    <th data-sortable="true" data-field="status">Status</th>
+                </tr>
             </thead>
             <tbody>
             <?php 
@@ -42,17 +48,17 @@ $res = mysqli_query($conn, $sql);
                         
             ?>
             <tr class="leading-9">
-                <td class="text-center p-2"><?php echo $i?></td>
-                <td class="text-center p-2" id="row-name"><?php echo $row['name']?></td>
-                <td class="text-center p-2" id="row-name"><?php echo $row['email']?></td>
-                <td class="text-center p-2" id="row-name"><?php echo $row['mobile']?></td>
-                <td class="text-center p-3">
+                <td><?php echo $row['id']?></td>
+                <td id="row-name"><?php echo $row['name']?></td>
+                <td id="row-name"><?php echo $row['email']?></td>
+                <td id="row-name"><?php echo $row['mobile']?></td>
+                <td>
                     <?php 
                         $status = $row['status'];
                        $row_id = $row['id'];
                         if($status == 1) {
                             ?>
-                            <span class='mr-2 p-1 rounded-md bg-green-400'>
+                            <span class='rounded-md bg-green-400'>
                                 <a href='?type=deactive&id=<?php echo $row_id?>'>
                                     Active
                                 </a>
@@ -60,7 +66,7 @@ $res = mysqli_query($conn, $sql);
                         <?php
                         } else {
                             ?>
-                            <span class="mr-2 p-1 rounded-md bg-red-600">
+                            <span class="rounded-md bg-red-600">
                                 <a href='?type=active&id=<?php echo $row_id?>'>
                                     Deactive
                                 </a>

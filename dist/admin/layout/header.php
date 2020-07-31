@@ -33,20 +33,17 @@ if($currentPath == '' || $currentPath == 'index.php') {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../style.css" />
     <link href="https://fonts.googleapis.com/css2?family=MuseoModerno&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="../style.css" />
     <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../global_css/global.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/custom.css" />
     <script
       src="https://kit.fontawesome.com/294f177ac8.js"
       crossorigin="anonymous"
     ></script>
-    <script
-    src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
     <title><?php echo $pageTitle ?></title>
   </head>
   <body class="h-full bg-gray-300">

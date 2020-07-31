@@ -35,7 +35,7 @@ $res = mysqli_query($conn, $sql);
            
         </div>
     </div>
-    <div class="mt-4 shadow-lg">
+    <div class="mt-4 shadow-lg p-2">
     <?php
         if(isset($showPrompt)) {
             if($showPrompt) {

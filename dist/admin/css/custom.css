@@ -6,10 +6,10 @@ html {
   font-size: 7rem;
 }
 
-.active-page {
+/* .active-page {
   background-color: #c05621;
   color: #feebc8;
-}
+} */
 
 .burger {
   margin: auto 1rem;
@@ -39,7 +39,7 @@ html {
 .slide {
   transform: translateX(0%);
 }
-
+/* 
 .dataTables_wrapper {
   background-color: white;
   box-shadow: 10px 15px -3px rgba(0, 0, 0, 0.1),
@@ -65,7 +65,7 @@ label select {
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   background-color: rgb(255, 188, 100);
   background: rgb(255, 188, 100);
-}
+} */
 
 .modal-box {
   position: absolute;

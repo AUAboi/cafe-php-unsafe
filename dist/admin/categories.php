@@ -45,7 +45,7 @@ $res = mysqli_query($conn, $sql);
            
         </div>
     </div>
-    <div class="mt-4 shadow-lg">
+    <div class="mt-4 p-2 shadow-lg table-responsive bg-white">
     <?php
         if(isset($showPrompt)) {
             if($showPrompt) {
@@ -65,14 +65,20 @@ $res = mysqli_query($conn, $sql);
             }
         }
     ?>
-        <table  id="table-main" class="table bg-white w-full mt-4 table-fixed sm:text-lg text-xs">
+        <table 
+            id="table-main" 
+            data-toggle="table"
+            data-pagination="true"
+            data-search="true"
+            class="table text-xs sm:text-lg p-2"
+        >
 
-            <thead>
+            <thead class="thead-dark">
             <tr class="m-2 p-2 border-b-2 font-bold">
-                <th class="m-2 p-2">ID</th>
-                <th class="m-2 p-2">Categories</th>
-                <th class="m-2 p-2 sm:right-align">Status</th>
-                <th class="m-2 p-2 ">Actions</th>
+                <th data-sortable="true" data-field="id">ID</th>
+                <th data-sortable="true" data-field="name">Categories</th>
+                <th data-sortable="true" data-field="status">Status</th>
+                <th data-field="actions">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -83,7 +89,7 @@ $res = mysqli_query($conn, $sql);
                         
             ?>
             <tr class="leading-9">
-                <td class="text-center p-2"><?php echo $i?></td>
+                <td class="text-center p-2"><?php echo $row['id']?></td>
                 <td class="text-center p-2" id="row-name"><?php echo $row['category']?></td>
                 <td class="text-center p-3">
                     <?php 
