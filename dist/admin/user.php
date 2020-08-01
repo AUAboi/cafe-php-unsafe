@@ -29,7 +29,7 @@ $res = mysqli_query($conn, $sql);
             data-toggle="table"
             data-pagination="true"
             data-search="true"
-            class="table text-xs sm:text-lg"
+            class="table text-sm sm:text-lg"
         >
             <thead class="thead-dark">
                 <tr>

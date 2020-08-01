@@ -15,7 +15,7 @@
             exit();
 
         } else {
-            mysqli_stmt_bind_param($stmt, "dd", $mobile, $id);
+            mysqli_stmt_bind_param($stmt, "sd", $mobile, $id);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
             $resultCheck = mysqli_stmt_num_rows($stmt);
@@ -32,7 +32,7 @@
                     header("Location: ../editDeliveryBoy.php?error=sql2error&id=".$id);
                     exit();
                 } else {
-                    mysqli_stmt_bind_param($stmt, "sd", $name, $mobile);
+                    mysqli_stmt_bind_param($stmt, "ss", $name, $mobile);
                     mysqli_stmt_execute($stmt);
                     header("Location: ../editDeliveryBoy.php?status=successful");
                     exit();

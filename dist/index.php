@@ -19,10 +19,10 @@
       <div
         class="container mx-auto flex flex-wrap sm:p-5 flex-col md:flex-row items-center"
       >
-        <nav class="flex lg:w-2/5 flex-wrap mb-2 sm:mb-0 items-center text-base md:ml-auto nav-links ">
-          <a class="mx-5 cursor-pointer md:text-lg hover:text-gray-900">Home</a>
-          <a class="mx-5 cursor-pointer md:text-lg hover:text-gray-900">About</a>
-          <a class="mx-5 cursor-pointer md:text-lg hover:text-gray-900">Contact</a>
+        <nav class="flex text-black lg:w-2/5 flex-wrap mb-2 sm:mb-0 items-center text-base md:ml-auto nav-links ">
+          <a class="mx-5 px-2 cursor-pointer md:text-lg nav-elements">Home</a>
+          <a class="mx-5 px-2 cursor-pointer md:text-lg nav-elements">About</a>
+          <a class="mx-5 px-2 cursor-pointer md:text-lg nav-elements">Contact</a>
           
         </nav>
         <div onclick="showNav()" class="burger sm:hidden cursor-pointer">

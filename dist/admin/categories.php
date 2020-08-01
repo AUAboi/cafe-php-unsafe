@@ -70,7 +70,7 @@ $res = mysqli_query($conn, $sql);
             data-toggle="table"
             data-pagination="true"
             data-search="true"
-            class="table text-xs sm:text-lg p-2"
+            class="table text-sm sm:text-lg p-2"
         >
 
             <thead class="thead-dark">

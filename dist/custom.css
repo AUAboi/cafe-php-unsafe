@@ -11,6 +11,10 @@
   transition: all 0.5s ease;
 }
 
+.nav-elements:hover {
+  border-bottom: solid black 2px;
+}
+
 @media screen and (max-width: 639px) {
   .nav-links {
     display: none;

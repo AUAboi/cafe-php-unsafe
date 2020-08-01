@@ -35,7 +35,7 @@ $res = mysqli_query($conn, $sql);
            
         </div>
     </div>
-    <div class="mt-4 shadow-lg p-2">
+    <div class="mt-4 p-2 shadow-lg table-responsive bg-white">
     <?php
         if(isset($showPrompt)) {
             if($showPrompt) {
@@ -55,15 +55,20 @@ $res = mysqli_query($conn, $sql);
             }
         }
     ?>
-        <table  id="table-main" class="table bg-white w-full mt-4 table-fixed sm:text-lg text-xs">
-
-            <thead>
+        <table 
+            id="table-main" 
+            data-toggle="table"
+            data-pagination="true"
+            data-search="true"
+            class="table text-sm sm:text-lg"
+        >
+            <thead class="thead-dark">
             <tr class="m-2 p-2 border-b-2 font-bold">
-                <th class="m-2 p-2">ID</th>
-                <th class="m-2 p-2">Name</th>
-                <th class="m-2 p-2">Mobile</th>
-                <th class="m-2 p-2 sm:right-align">Status</th>
-                <th class="m-2 p-2 ">Actions</th>
+                <th data-sortable="true" data-field="id" class="m-2 p-2">ID</th>
+                <th data-sortable="true" data-field="name" class="m-2 p-2">Name</th>
+                <th data-field="number" class="m-2 p-2">Mobile</th>
+                <th data-sortable="true" data-field="status" class="m-2 p-2 sm:right-align">Status</th>
+                <th data-field="action" class="m-2 p-2">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -83,7 +88,7 @@ $res = mysqli_query($conn, $sql);
                        $row_id = $row['id'];
                         if($status == 1) {
                             ?>
-                            <span class='mr-2 p-1 rounded-md bg-green-400'>
+                            <span class="mr-2 p-1 rounded-md bg-green-400 hover:bg-green-500">
                                 <a href='?action=deactive&id=<?php echo $row_id?>'>
                                     Active
                                 </a>
@@ -91,7 +96,7 @@ $res = mysqli_query($conn, $sql);
                         <?php
                         } else {
                             ?>
-                            <span class="mr-2 p-1 rounded-md bg-red-600">
+                            <span class="mr-2 p-1 rounded-md bg-red-500 hover:bg-red-600">
                                 <a href='?action=active&id=<?php echo $row_id?>'>
                                     Deactive
                                 </a>
@@ -103,10 +108,10 @@ $res = mysqli_query($conn, $sql);
                 </td>
                 
                 <td class="text-center">
-                    <span class="mr-2 p-1 rounded-md bg-yellow-400">
+                    <span class="mr-2 p-1 rounded-md bg-yellow-400 hover:bg-yellow-500">
                         <a href='editDeliveryBoy.php?id=<?php echo $row['id']?>&name=<?php echo $row['name']?>&contact=<?php echo $row['mobile'] ?>'>Edit</a>
                     </span>
-                    <span class="mr-2 p-1 rounded-md bg-red-400">
+                    <span class="mr-2 p-1 rounded-md bg-red-400 hover:bg-red-500">
                         <a href="?id=<?php echo $row['id']?>&action=delete">Delete</a>
                     </span>
                 </div>        
