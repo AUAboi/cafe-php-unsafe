@@ -33,7 +33,7 @@
                 } else {
                     mysqli_stmt_bind_param($stmt, "s", $catName);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../editCategories.php?status=successfull");
+                    header("Location: ../categories.php");
                     exit();
                 }
             }

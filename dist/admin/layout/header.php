@@ -19,10 +19,12 @@ if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Categories Management';
 } else if ($currentPath == 'user.php') {
   $pageTitle = 'User Master';
-} else if ($currentPath == 'deliveryGuy.php') {
+} else if ($currentPath == 'deliveryGuy.php' || $currentPath == 'addDeliveryBoy.php' || $currentPath == 'editDelivery.php') {
   $pageTitle = 'Delivery Boy Management';
 } else if ($currentPath == 'orders.php') {
   $pageTitle = 'Order Master';
+} else if($currentPath == 'coupon.php' || $currentPath == 'addCouponCode.php') {
+  $pageTitle ='Coupon Code Management';
 } else {
   $pageTitle = 'invalid page';
 }
@@ -61,7 +63,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
         <span>
           <i class="fas fa-caret-down"></i>
         </span>
-        <form action="logout.php" method="post" class="flex bg-gray-200 absolute mt-12 right-5 z-10 hidden log-out px-4 py-2">
+        <form action="logout.inc.php" method="post" class="flex bg-gray-200 absolute mt-12 right-5 z-10 hidden log-out px-4 py-2">
           <i class="fas fa-power-off mt-2 mr-3 text-sm py-2"></i>
           <button type="submit" class="text-sm py-2">Logout</a>
         </form>
@@ -87,6 +89,11 @@ if($currentPath == '' || $currentPath == 'index.php') {
         class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Delivery Boy Management"){ echo "active-page";} ?>"
         href="deliveryGuy.php"
         >Delivery Boy Management</a
+      >
+      <a
+        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Coupon Code Management"){ echo "active-page";} ?>"
+        href="coupon.php"
+        >Coupon Code Management</a
       >
       <a
         class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Order Master"){ echo "active-page";} ?>"

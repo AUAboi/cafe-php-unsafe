@@ -6,10 +6,10 @@ html {
   font-size: 7rem;
 }
 
-/* .active-page {
+.active-page {
   background-color: #c05621;
   color: #feebc8;
-} */
+}
 
 .burger {
   margin: auto 1rem;

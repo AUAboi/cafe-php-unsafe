@@ -58,7 +58,7 @@ $res = mysqli_query($conn, $sql);
                        $row_id = $row['id'];
                         if($status == 1) {
                             ?>
-                            <span class='rounded-md bg-green-400'>
+                            <span class='mr-2 p-1 rounded-md bg-green-400 hover:bg-green-500'>
                                 <a href='?type=deactive&id=<?php echo $row_id?>'>
                                     Active
                                 </a>
@@ -66,7 +66,7 @@ $res = mysqli_query($conn, $sql);
                         <?php
                         } else {
                             ?>
-                            <span class="rounded-md bg-red-600">
+                            <span class="mr-2 p-1 rounded-md bg-red-400 hover:bg-red-500">
                                 <a href='?type=active&id=<?php echo $row_id?>'>
                                     Deactive
                                 </a>

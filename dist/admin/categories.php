@@ -50,7 +50,7 @@ $res = mysqli_query($conn, $sql);
         if(isset($showPrompt)) {
             if($showPrompt) {
             ?>
-            <div class="text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg">
+            <div class="text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50">
                 <p>Do you really want to delete <span class="font-bold"><?php echo $catName;?></span> category?</p>
                 <div class="text-center p-1">
                     <span class="text-green-600 p-2 m-4 font-bold">
@@ -117,11 +117,15 @@ $res = mysqli_query($conn, $sql);
                 </td>
                 
                 <td class="text-center">
-                    <span class="mr-2 p-1 rounded-md bg-yellow-400">
-                        <a href='editCategories.php?id=<?php echo $row['id']?>&&catname=<?php echo $row['category'] ?>'>Edit</a>
+                    <span class="mr-2 p-1 text-orange-400 hover:text-orange-500">
+                        <a href='editCategories.php?id=<?php echo $row['id']?>&&catname=<?php echo $row['category'] ?>'>
+                            <i class="fas fa-edit fa-2x"></i>
+                        </a>
                     </span>
-                    <span class="mr-2 p-1 rounded-md bg-red-400">
-                        <a href="?id=<?php echo $row['id']?>&action=delete">Delete</a>
+                    <span class="mr-2 p-1 text-red-600 hover:text-red-700">
+                        <a href="?id=<?php echo $row['id']?>&action=delete">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </a>
                     </span>
                 </div>        
                 </td>
