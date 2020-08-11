@@ -36,25 +36,6 @@ $res = mysqli_query($conn, $sql);
         </div>
     </div>
     <div class="mt-4 p-2 shadow-lg table-responsive bg-white">
-    <?php
-        if(isset($showPrompt)) {
-            if($showPrompt) {
-            ?>
-            <div class="text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg">
-                <p>Do you really want to delete <span class="font-bold"><?php echo $catName;?></span> category?</p>
-                <div class="text-center p-1">
-                    <span class="text-green-600 p-2 m-4 font-bold">
-                        <a href="?id=<?php echo $id?>&type=delete">Confirm</a>
-                    </span>
-                    <span class="text-red-600 p-2 m-4 font-bold">
-                        <a href="categories.php">Deny</a>
-                    </span>
-                </div>
-            </div>
-            <?php
-            }
-        }
-    ?>
         <table 
             id="table-main" 
             data-toggle="table"

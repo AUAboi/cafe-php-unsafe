@@ -1,16 +1,31 @@
 <?php 
 include_once "layout/header.php";
-
+$error = false;
 if(isset($_GET['error'])) {
-    if($_GET['error'] == 'number-already-exists') {
-        $msg = 'Category Already Exists';
+    $error = true;
+    if($_GET['error'] == 'empty-fields') {
+        $msg = 'Please fill all fields';
+    } else if($_GET['error'] == 'number-already-exists') {
+        $msg = 'Phone Number Already Exists';
+    } else if ($_GET['error'] == 'invalid-number') {
+        $msg = 'Please enter a valid number';
+    } else if ($_GET['error'] == 'pwd-confirmation') {
+        $msg = 'Password Repeat is Wrong';
+    } else if ($_GET['error'] == 'pwd-short') {
+        $msg = 'Password is too short';
+    } else if ($_GET['error'] == 'pwd-easy') {
+        $msg = 'Password should contain atleast one letter and a number';
+    } else {
+        $msg = 'Some error occurred, please try again later';
     }
 }
 
 if(isset($_GET['status'])) {
-    if($_GET['status'] == 'successful') {
+    if($_GET['status'] == 'success') {
+        $error = false;
         $msg = "Added Successfully";
     } else {
+        $error = true;
         $msg = "Some error occurred please try again!";
     }
 }
@@ -33,7 +48,7 @@ if(isset($_GET['status'])) {
         <label class="m-3 p-2 text-2xl" for="password">Password Repeat</label>
         <input class="m-3 p-2 rounded-md bg-gray-200" type="password" placeholder="Confirm Your Password Again" name="password-repeat"><br>
         <input class="m-3 p-2 cursor-pointer bg-orange-400 rounded-md" type="submit" name="submit">
-        <div class="p-2">
+        <div class="p-2 font-bold <?php if($error){ echo "text-red-600"; } else{ echo "text-green-600"; } ?>">
             <?php if(isset($msg)){
                 echo $msg;
             }

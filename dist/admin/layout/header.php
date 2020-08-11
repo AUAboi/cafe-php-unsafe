@@ -17,6 +17,8 @@ if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Dashboard';
 } else if($currentPath == 'categories.php' || $currentPath == 'addCategories.php' || $currentPath == 'editCategories.php') {
   $pageTitle = 'Categories Management';
+} else if($currentPath == 'dish.php' || $currentPath == 'addDish.php' || $currentPath == 'editDish.php') {
+  $pageTitle = 'Dish Management';
 } else if ($currentPath == 'user.php') {
   $pageTitle = 'User Master';
 } else if ($currentPath == 'deliveryGuy.php' || $currentPath == 'addDeliveryBoy.php' || $currentPath == 'editDelivery.php') {
@@ -25,8 +27,6 @@ if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Order Master';
 } else if($currentPath == 'coupon.php' || $currentPath == 'addCouponCode.php') {
   $pageTitle ='Coupon Code Management';
-} else {
-  $pageTitle = 'invalid page';
 }
 ?>
 
@@ -71,32 +71,37 @@ if($currentPath == '' || $currentPath == 'index.php') {
     </header>
     <nav class="h-full p-0 w-screen text-center sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner transform -translate-x-full sm:translate-x-0" >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dashboard"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dashboard"){ echo "active-page";} ?>"
         href="index.php"
         >Dashboard</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200  <?php if($pageTitle == "Categories Management"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200  <?php if($pageTitle == "Categories Management"){ echo "active-page";} ?>"
         href="categories.php"
-        >Catagories</a
+        >Category Management</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "User Master"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200  <?php if($pageTitle == "Dish Management"){ echo "active-page";} ?>"
+        href="dish.php"
+        >Dish Management</a
+      >
+      <a
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "User Master"){ echo "active-page";} ?>"
         href="user.php"
         >Users Master</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Delivery Boy Management"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Delivery Boy Management"){ echo "active-page";} ?>"
         href="deliveryGuy.php"
         >Delivery Boy Management</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Coupon Code Management"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Coupon Code Management"){ echo "active-page";} ?>"
         href="coupon.php"
         >Coupon Code Management</a
       >
       <a
-        class="block text-lg text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Order Master"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Order Master"){ echo "active-page";} ?>"
         href="orders.php"
         >Order Master</a
       >
