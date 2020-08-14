@@ -47,6 +47,7 @@ $res = mysqli_query($conn, $sql);
     </div>
     <div class="mt-4 p-2 shadow-lg table-responsive bg-white">
     <?php
+        // Make this in JS
         if(isset($showPrompt)) {
             if($showPrompt) {
             ?>
@@ -97,7 +98,7 @@ $res = mysqli_query($conn, $sql);
                        $row_id = $row['id'];
                         if($status == 1) {
                             ?>
-                            <span class='mr-2 p-1 rounded-md bg-green-400'>
+                            <span class='mr-2 p-1 rounded-md bg-green-400 hover:bg-green-500'>
                                 <a href='?type=deactive&id=<?php echo $row_id?>'>
                                     Active
                                 </a>
@@ -105,7 +106,7 @@ $res = mysqli_query($conn, $sql);
                         <?php
                         } else {
                             ?>
-                            <span class="mr-2 p-1 rounded-md bg-red-600">
+                            <span class="mr-2 p-1 rounded-md bg-red-600 hover:bg-red-700">
                                 <a href='?type=active&id=<?php echo $row_id?>'>
                                     Deactive
                                 </a>
@@ -122,6 +123,9 @@ $res = mysqli_query($conn, $sql);
                             <i class="fas fa-edit fa-2x"></i>
                         </a>
                     </span>
+                    <!-- Known Errors
+                        - deleting categories effect on dish 
+                    -->
                     <span class="mr-2 p-1 text-red-600 hover:text-red-700">
                         <a href="?id=<?php echo $row['id']?>&action=delete">
                             <i class="fas fa-trash fa-2x"></i>

@@ -31,7 +31,7 @@ $categories = mysqli_query($conn, "SELECT * FROM category WHERE status='1' ORDER
         <p class="text-center text-xl md:text-3xl font-extrabold">Add Dish Item</p>
         <a class="underline text-sm text-blue-500" href="dish.php">Return To Dish Management Page</a>
     </div>
-    <form class="container text-center text-lg mt-3 bg-white shadow-lg" method="post" action="includes/addDish.inc.php">
+    <form class="container text-center text-lg mt-3 bg-white shadow-lg" method="post" action="includes/addDish.inc.php" enctype="multipart/form-data">
         <label class="m-3 p-2 text-2xl" for="name">Dish Name</label>
         <input class="m-3 p-2 rounded-md bg-gray-200" type="text" placeholder="Write Dish Name" name="name">
         <div>
@@ -45,6 +45,8 @@ $categories = mysqli_query($conn, "SELECT * FROM category WHERE status='1' ORDER
                 ?>
             </select>
         </div>
+        <label class="m-3 p-2 text-2xl" for="image">Dish Image</label>
+        <input class="m-3 p-2 rounded-md bg-gray-200" type="file" placeholder="Dish Image" required name="img"><br>
         <label class="m-3 p-2 text-2xl" for="name">Dish Details</label><br>
         <textarea class="m-3 p-2 rounded-md bg-gray-200 resize-none" type="text" placeholder="Write Dish Details" name="details"></textarea><br>
         <input class="m-3 p-2 cursor-pointer bg-orange-400 hover:bg-orange-500 rounded-md" type="submit" name="submit">

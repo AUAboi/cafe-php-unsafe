@@ -1,13 +1,15 @@
 <?php 
 session_start();
 include "includes/connection.inc.php";
+include "includes/constant.inc.php";
 require_once "login/authCookieSessionValidate.php";
 
 if(!$isLoggedIn && !isset($_SESSION['userUId'])) {
-  header("Location: login.php?error=notloggedin");
+  header("Location: login.php");
 }
 
 $username = $_SESSION['userUId'];
+
 $currentPathString = $_SERVER['REQUEST_URI'];
 $currentPathArray = explode('/', $currentPathString);
 $currentPath = $currentPathArray[count($currentPathArray) - 1];
@@ -46,7 +48,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
       src="https://kit.fontawesome.com/294f177ac8.js"
       crossorigin="anonymous"
     ></script>
-    <title><?php echo $pageTitle ?></title>
+    <title><?php echo SITE_NAME ?></title>
   </head>
   <body class="h-full bg-gray-300">
     <header class="flex justify-between bg-orange-200 shadow-lg z-30 sticky top-0">
@@ -63,7 +65,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
         <span>
           <i class="fas fa-caret-down"></i>
         </span>
-        <form action="logout.inc.php" method="post" class="flex bg-gray-200 absolute mt-12 right-5 z-10 hidden log-out px-4 py-2">
+        <form action="logout.php" method="post" class="flex bg-gray-200 absolute mt-12 right-5 z-10 hidden log-out px-4 py-2">
           <i class="fas fa-power-off mt-2 mr-3 text-sm py-2"></i>
           <button type="submit" class="text-sm py-2">Logout</a>
         </form>

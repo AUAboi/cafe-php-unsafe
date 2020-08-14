@@ -11,5 +11,5 @@ session_destroy();
 
 // clear cookies
 $util->clearAuthCookie();
-header('Location: ../login.php')
+header('Location: login.php')
 ?>

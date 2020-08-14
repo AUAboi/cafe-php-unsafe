@@ -80,13 +80,13 @@ if (! empty($_POST["login"])) {
   <main class="w-full max-w-xs mx-auto mt-40">
     
   <form method="post" id="frmLogin" class="text-center">
-    <div class="error-message text-red"><?php if(isset($message)) { echo $message; } ?></div>
+    <div class="error-message text-red-500"><?php if(isset($message)) { echo $message; } ?></div>
     <div class="field-group">
         <div class="my-2">
             <label for="login">Username</label>
         </div>
         <div class="my-2">
-            <input name="member_name" type="text"
+            <input name="member_name" autocomplete="off" type="text"
                 value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>"
                 class="input-field rounded-lg p-1">
         </div>
@@ -114,8 +114,10 @@ if (! empty($_POST["login"])) {
                 class="form-submit-button bg-orange-500 hover:bg-orange-700 border-orange-500 hover:border-orange-700 text-sm border-4 text-white py-1 px-2 roundedbg-orange-500 hover:bg-orange-700 border-orange-500 hover:border-orange-700 text-sm border-4 text-white py-1 px-2 rounded"></span>
         </div>
     </div>
+
+
 </form>
-  </main>
+</main>
 </body>
 
 </html>
