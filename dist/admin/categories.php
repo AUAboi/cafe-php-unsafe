@@ -9,6 +9,17 @@ if(isset($_GET['action']) && isset($_GET['id']) && $_GET['id'] > 0) {
     $result = mysqli_query($conn, $sql);
     $rowResult = mysqli_fetch_assoc($result);
     $catName = $rowResult['category'];
+
+    //ONCE JS IMPLEMENTATION IS COMPLETE FOR MODAL, PRINT DISH NAMES TOO
+
+    // $sql2 = "SELECT dish FROM dish WHERE id='$id'";
+    // $result2 = mysqli_query($conn, $sql2);
+    // $rowResult2 = mysqli_fetch_assoc($result2);
+    // for($i = 0; $i < count($rowResult2['dish']); $i++){
+    //     $dishName = $rowResult2['dish'][$i];
+
+    // }
+    
 }
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id'] > 0){
@@ -16,7 +27,9 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 	$id = $_GET['id'];
     
     if($type =='delete'){
-		mysqli_query($conn,"DELETE FROM category WHERE id='$id'");
+        mysqli_query($conn,"DELETE FROM category WHERE id='$id'");
+        mysqli_query($conn, "DELETE FROM dish WHERE category_id='$id'");
+
 		header('Location:categories.php');
     }
 
@@ -34,6 +47,7 @@ $sql = "SELECT * FROM category ORDER BY id";
 $res = mysqli_query($conn, $sql);
 
 ?>
+
 <main class="sm:ml-48 mx-3 sm:mr-6 mt-4 relative">
     <div class="bg-white p-5 shadow-lg w-full">
         <p class="text-center text-2xl md:text-3xl font-extrabold m-2">Categories</p>
@@ -53,6 +67,7 @@ $res = mysqli_query($conn, $sql);
             ?>
             <div class="text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50">
                 <p>Do you really want to delete <span class="font-bold"><?php echo $catName;?></span> category?</p>
+                <p>All dishes within this category will also be deleted</p>
                 <div class="text-center p-1">
                     <span class="text-green-600 p-2 m-4 font-bold">
                         <a href="?id=<?php echo $id?>&type=delete">Confirm</a>
@@ -78,6 +93,7 @@ $res = mysqli_query($conn, $sql);
             <tr class="m-2 p-2 border-b-2 font-bold">
                 <th data-sortable="true" data-field="id">ID</th>
                 <th data-sortable="true" data-field="name">Categories</th>
+                <th data-field="image">Image</th>
                 <th data-sortable="true" data-field="status">Status</th>
                 <th data-field="actions">Actions</th>
             </tr>
@@ -92,6 +108,11 @@ $res = mysqli_query($conn, $sql);
             <tr class="leading-9">
                 <td class="text-center p-2"><?php echo $row['id']?></td>
                 <td class="text-center p-2" id="row-name"><?php echo $row['category']?></td>
+                <td class="text-center p-2" id="row-name">
+                    <a class="text-center" href="<?php echo SITE_DISH_IMAGE.$row['image']?>" target="_blank">
+                        <img class="w-full img-showcase" src="<?php echo SITE_DISH_IMAGE.$row['image']?>" alt="<?php echo $row['image'] ?>">
+                    </a>
+                </td>
                 <td class="text-center p-3">
                     <?php 
                         $status = $row['status'];

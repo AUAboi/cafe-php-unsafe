@@ -12,7 +12,13 @@ $username = $_SESSION['userUId'];
 
 $currentPathString = $_SERVER['REQUEST_URI'];
 $currentPathArray = explode('/', $currentPathString);
-$currentPath = $currentPathArray[count($currentPathArray) - 1];
+$currentPathFull = $currentPathArray[count($currentPathArray) - 1];
+//This gives Path without appended variables in link
+if(strpos($currentPathFull, '?') !== False) {
+  $currentPath = substr($currentPathFull, 0, strpos($currentPathFull, "?"));
+} else {
+  $currentPath = $currentPathFull;
+}
 $pageTitle = '';
 
 if($currentPath == '' || $currentPath == 'index.php') {
@@ -29,6 +35,8 @@ if($currentPath == '' || $currentPath == 'index.php') {
   $pageTitle = 'Order Master';
 } else if($currentPath == 'coupon.php' || $currentPath == 'addCouponCode.php') {
   $pageTitle ='Coupon Code Management';
+} else {
+  $pageTitle = 'error';
 }
 ?>
 
@@ -48,7 +56,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
       src="https://kit.fontawesome.com/294f177ac8.js"
       crossorigin="anonymous"
     ></script>
-    <title><?php echo SITE_NAME ?></title>
+    <title><?php if($pageTitle !== ''){ echo $pageTitle ;} else{ echo SITE_NAME ;}?></title>
   </head>
   <body class="h-full bg-gray-300">
     <header class="flex justify-between bg-orange-200 shadow-lg z-30 sticky top-0">

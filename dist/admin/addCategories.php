@@ -35,6 +35,8 @@ if(isset($_GET['status'])) {
         <label class="m-3 p-2 text-2xl" for="name">Category Name</label><br>
         <input class="m-3 p-2 rounded-md bg-gray-200" type="text" placeholder="Write Name for Category" name="name"><br>
         <input class="m-3 p-2 cursor-pointer bg-orange-400 rounded-md" type="submit" name="submit">
+        <label class="m-3 p-2 text-2xl" for="image">Category Cover Image</label>
+        <input class="m-3 p-2 rounded-md bg-gray-200" type="file" placeholder="Dish Image" required name="image"><br>
         <div class="font-bold p-2 <?php if($error){ echo "text-red-600" ;} else { echo "text-green-600" ;} ?>">
             <?php if(isset($msg)){
                 echo $msg;

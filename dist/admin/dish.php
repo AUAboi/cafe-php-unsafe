@@ -3,7 +3,7 @@ include_once "layout/header.php";
 
 if(isset($_GET['action']) && $_GET['action']!=='' && isset($_GET['id']) && $_GET['id'] > 0){
 	$type = $_GET['action'];
-	$id = $_GET['id'];
+	$id = mysqli_real_escape_string($conn, $_GET['id']);
     
     if($type =='delete'){
 		mysqli_query($conn,"DELETE FROM dish WHERE id='$id'");
@@ -63,7 +63,11 @@ $res = mysqli_query($conn, $sql);
                 <td class="text-center p-2"><?php echo $i?></td>
                 <td class="text-center p-2" id="row-name"><?php echo $row['dish']?></td>
                 <td class="text-center text-white p-2 <?php if($row['cat_status'] === '1') { echo "bg-green-600";} else { echo "bg-red-600"; } ?>" id="row-name"><?php echo $row['category']?></td>
-                <td class="text-center p-2" id="row-name"><?php echo $row['image']?></td>
+                <td class="text-center p-2" id="row-name">
+                    <a class="text-center" href="<?php echo SITE_DISH_IMAGE.$row['image']?>" target="_blank">
+                        <img class="w-full img-showcase" src="<?php echo SITE_DISH_IMAGE.$row['image']?>" alt="<?php echo $row['image'] ?>">
+                    </a>
+                </td>
                 <td class="text-center p-3">
                     <?php 
                         $status = $row['status'];
@@ -89,6 +93,11 @@ $res = mysqli_query($conn, $sql);
                     
                 </td>
                 <td class="text-center">
+                    <span class="mr-2 p-1 text-orange-400 hover:text-orange-500">
+                        <a href='editDish.php?id=<?php echo $row['id']?>&&catName=<?php echo $row['category'] ?>'>
+                            <i class="fas fa-edit fa-2x"></i>
+                        </a>
+                    </span>
                     <span class="mr-2 p-1 text-red-600 hover:text-red-700">
                         <a href="?id=<?php echo $row['id']?>&action=delete">
                             <i class="fas fa-trash fa-2x"></i>

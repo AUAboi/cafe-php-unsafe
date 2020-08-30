@@ -23,7 +23,10 @@
                     exit();
 
                 } else {
-                    $sql = "INSERT INTO category (category, added_on) VALUES (?, ?)";
+                    $img = $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], SERVER_CATEGORY_IMAGE.$_FILES['image']['name']);
+
+                    $sql = "INSERT INTO category (category, image, added_on) VALUES (?, ?, ?)";
                     $stmt = mysqli_stmt_init($conn);
 
                     if (!mysqli_stmt_prepare($stmt, $sql)) {

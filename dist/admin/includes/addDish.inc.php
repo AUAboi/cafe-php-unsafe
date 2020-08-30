@@ -2,16 +2,15 @@
     if(isset($_POST['submit'])){
         if(isset($_POST['name']) && $_POST['name'] !== '' && isset($_POST['category']) && $_POST['category'] !== '' && isset($_POST['details']) && $_POST['details'] !== ''){
             require "connection.inc.php";
-            include "constant.inc.php";
+            require "constant.inc.php";
             $name = $_POST['name'];
             $catId = $_POST['category'];
             $dishDetail = $_POST['details'];
-            $img = $_FILE['image']['name'];
-            move_uploaded_file($_FILE['image']['tmp_name'], $_FILE['image']['name']);
             $sql = "SELECT * FROM dish WHERE dish=?";
             $stmt = mysqli_stmt_init($conn);
             $added_on = date('Y-m-d');
-
+            
+            
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("Location: ../addDish.php?error=sql1error");
                 exit();
@@ -27,6 +26,10 @@
                     exit();
 
                 } else {
+                    $img = $_FILES['image']['name'];
+                    move_uploaded_file($_FILES['image']['tmp_name'], SERVER_DISH_IMAGE.$_FILES['image']['name']);
+
+
                     $sql = "INSERT INTO dish (category_id, dish, dish_detail, image, added_on) VALUES (?, ?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($conn);
 
@@ -34,7 +37,7 @@
                         header("Location: ../addDish.php?error=sql2error");
                         exit();
                     } else {
-                        mysqli_stmt_bind_param($stmt, "sssbs", $catId, $name, $dishDetail, $img, $added_on);
+                        mysqli_stmt_bind_param($stmt, "sssss", $catId, $name, $dishDetail, $img, $added_on);
                         mysqli_stmt_execute($stmt);
                         header("Location: ../addDish.php?status=successful");
                         exit();

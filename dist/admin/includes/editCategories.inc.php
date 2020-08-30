@@ -5,7 +5,7 @@
         $catName = $_POST['name'];
         $catId = $_POST['id'];
 
-        $sql = "SELECT * FROM category WHERE category=?";
+        $sql = "SELECT * FROM category WHERE category=? AND id!=?";
         $stmt = mysqli_stmt_init($conn);
        
 
@@ -14,26 +14,27 @@
             exit();
 
         } else {
-            mysqli_stmt_bind_param($stmt, "sd", $catName, $catId);
+            //catID set as 's', make sure
+            mysqli_stmt_bind_param($stmt, "ss", $catName, $catId);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
             $resultCheck = mysqli_stmt_num_rows($stmt);
             
             if ($resultCheck > 0) {
-                header("Location: ../editCategories.php?error=catalreadyexists");
+                header("Location: ../categories.php?error=catalreadyexists");
                 exit();
 
             } else {
-                $sql = "UPDATE category SET category=? WHERE id=$catId";
+                $sql = "UPDATE category SET category=? WHERE id=?";
                 $stmt = mysqli_stmt_init($conn);
 
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
-                    header("Location: ../editCategories.php?error=sql2error&id=$catId");
+                    header("Location: ../categories.php?error=sql2error");
                     exit();
                 } else {
-                    mysqli_stmt_bind_param($stmt, "s", $catName);
+                    mysqli_stmt_bind_param($stmt, "ss", $catName, $catId);
                     mysqli_stmt_execute($stmt);
-                    header("Location: ../categories.php");
+                    header("Location: ../categories.php?successful");
                     exit();
                 }
             }
