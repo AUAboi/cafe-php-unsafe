@@ -18,3 +18,12 @@ function slideIn() {
   nav.classList.toggle("sm:translate-x-0");
   nav.classList.toggle("sm:-translate-x-full");
 }
+
+function showModal(id) {
+  const modal = document.querySelector(".modalBox");
+  const link = document.querySelector(".del-link");
+  link.innerHTML = `
+    <a href="?id=${id}?>&type=delete" class="del-link text-green-500">Confirm</a>
+  `;
+  modal.classList.toggle("hidden");
+}

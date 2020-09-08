@@ -23,13 +23,18 @@ if(isset($_GET['action']) && isset($_GET['id']) && $_GET['id'] > 0) {
 }
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id'] > 0){
-	$type = $_GET['type'];
-	$id = $_GET['id'];
+	$type = mysqli_real_escape_string($conn, $_GET['type']);
+	$id = mysqli_real_escape_string($conn, $_GET['id']);
     
     if($type =='delete'){
+        $imgRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT image FROM category WHERE id='$id'")); 
+        $img = $imgRow['image'];
+        if(!empty($img)){
+            unlink(SERVER_CATEGORY_IMAGE.$img );
+        } 
+        
         mysqli_query($conn,"DELETE FROM category WHERE id='$id'");
         mysqli_query($conn, "DELETE FROM dish WHERE category_id='$id'");
-
 		header('Location:categories.php');
     }
 
@@ -81,6 +86,13 @@ $res = mysqli_query($conn, $sql);
             }
         }
     ?>
+        <div class="modalBox text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50 hidden">
+            <p>Do you really want to delete this category?</p>
+            <div class="">
+                <a class="del-link text-green-500">Confirm</a>
+                <a href="categories.php" class="font-bold text-red-500">Deny</a>
+            </div>
+        </div>
         <table 
             id="table-main" 
             data-toggle="table"
@@ -109,8 +121,8 @@ $res = mysqli_query($conn, $sql);
                 <td class="text-center p-2"><?php echo $row['id']?></td>
                 <td class="text-center p-2" id="row-name"><?php echo $row['category']?></td>
                 <td class="text-center p-2" id="row-name">
-                    <a class="text-center" href="<?php echo SITE_DISH_IMAGE.$row['image']?>" target="_blank">
-                        <img class="w-full img-showcase" src="<?php echo SITE_DISH_IMAGE.$row['image']?>" alt="<?php echo $row['image'] ?>">
+                    <a class="text-center" href="<?php echo SITE_CATEGORY_IMAGE.$row['image']?>" target="_blank">
+                        <img class="w-full rounded-md img-showcase" src="<?php echo SITE_CATEGORY_IMAGE.$row['image']?>" alt="<?php echo $row['image'] ?>">
                     </a>
                 </td>
                 <td class="text-center p-3">
@@ -140,17 +152,23 @@ $res = mysqli_query($conn, $sql);
                 
                 <td class="text-center">
                     <span class="mr-2 p-1 text-orange-400 hover:text-orange-500">
-                        <a href='editCategories.php?id=<?php echo $row['id']?>&&catname=<?php echo $row['category'] ?>'>
+                        <a href='editCategories.php?id=<?php echo $row['id']?>&&cat-name=<?php echo $row['category'] ?>'>
                             <i class="fas fa-edit fa-2x"></i>
                         </a>
                     </span>
+                    
                     <!-- Known Errors
                         - deleting categories effect on dish 
                     -->
-                    <span class="mr-2 p-1 text-red-600 hover:text-red-700">
+                    <!-- <span class="mr-2 p-1 text-red-600 hover:text-red-700">
                         <a href="?id=<?php echo $row['id']?>&action=delete">
                             <i class="fas fa-trash fa-2x"></i>
                         </a>
+                    </span> -->
+                    <span class="mr-2 p-1 text-red-600 hover:text-red-700">
+                        <button onclick="showModal(<?php echo $row_id ?>)">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </button>
                     </span>
                 </div>        
                 </td>

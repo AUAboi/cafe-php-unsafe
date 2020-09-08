@@ -9,7 +9,7 @@
             $sql = "SELECT * FROM dish WHERE dish=?";
             $stmt = mysqli_stmt_init($conn);
             $added_on = date('Y-m-d');
-            
+            $type = $_FILES['image']['type'];
             
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("Location: ../addDish.php?error=sql1error");
@@ -26,22 +26,25 @@
                     exit();
 
                 } else {
-                    $img = $_FILES['image']['name'];
-                    move_uploaded_file($_FILES['image']['tmp_name'], SERVER_DISH_IMAGE.$_FILES['image']['name']);
-
-
-                    $sql = "INSERT INTO dish (category_id, dish, dish_detail, image, added_on) VALUES (?, ?, ?, ?, ?)";
-                    $stmt = mysqli_stmt_init($conn);
-
-                    if (!mysqli_stmt_prepare($stmt, $sql)) {
-                        header("Location: ../addDish.php?error=sql2error");
-                        exit();
-                    } else {
-                        mysqli_stmt_bind_param($stmt, "sssss", $catId, $name, $dishDetail, $img, $added_on);
-                        mysqli_stmt_execute($stmt);
-                        header("Location: ../addDish.php?status=successful");
-                        exit();
+                    if($type != 'image/jpeg' && $type !='image/png') {
+                        header('Location: ../addDish.php?error=invalid-file-format');
+                    }else {
+                        $img = rand(111111111, 999999999).'_'.$_FILES['image']['name'];
+                        move_uploaded_file($_FILES['image']['tmp_name'], SERVER_DISH_IMAGE.$img);
+                        $sql = "INSERT INTO dish (category_id, dish, dish_detail, image, added_on) VALUES (?, ?, ?, ?, ?)";
+                        $stmt = mysqli_stmt_init($conn);
+    
+                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                            header("Location: ../addDish.php?error=sql2error");
+                            exit();
+                        } else {
+                            mysqli_stmt_bind_param($stmt, "sssss", $catId, $name, $dishDetail, $img, $added_on);
+                            mysqli_stmt_execute($stmt);
+                            header("Location: ../addDish.php?status=successful");
+                            exit();
+                        }
                     }
+                    
                 }
             }
             mysqli_stmt_close($stmt);

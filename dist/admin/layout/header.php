@@ -74,14 +74,14 @@ if($currentPath == '' || $currentPath == 'index.php') {
           <i class="fas fa-caret-down"></i>
         </span>
         <form action="logout.php" method="post" class="flex bg-gray-200 absolute mt-12 right-5 z-10 hidden log-out px-4 py-2">
-          <i class="fas fa-power-off mt-2 mr-3 text-sm py-2"></i>
-          <button type="submit" class="text-sm py-2">Logout</a>
+          
+          <button type="submit" class="text-sm py-2"><i class="fas fa-power-off mt-2 mr-3 text-sm py-2"></i>Logout</a>
         </form>
       </div>
     </header>
-    <nav class="h-full p-0 w-screen text-center sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner transform -translate-x-full sm:translate-x-0" >
+    <nav class="h-full p-0 w-screen text-center text-sm sm:w-40 nav-bar bg-orange-200 shadow-xl shadow-inner transform -translate-x-full sm:translate-x-0" >
       <a
-        class="block text-orange-700 mt-6 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dashboard"){ echo "active-page";} ?>"
+        class="block text-orange-700 mt-4 mb-3 p-2 mx-auto hover:bg-orange-700 hover:text-orange-200 <?php if($pageTitle == "Dashboard"){ echo "active-page";} ?>"
         href="index.php"
         >Dashboard</a
       >

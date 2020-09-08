@@ -14,6 +14,8 @@ if(isset($_GET['error'])) {
         $msg = 'Dish Already Exists';
     } else if($_GET['error'] == 'empty-fields') {
         $msg = "Please Fill all Fields";
+    } else if($_GET['error'] == 'invalid-file-format'){
+        $msg = "Invalid File Format. Use jpeg or png";
     }
 
 }

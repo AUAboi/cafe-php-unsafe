@@ -28,20 +28,34 @@
 
                 } else {
                     if($_FILES['image']['name'] != '') {
-                        $img = $_FILES['image']['name'];
-                        move_uploaded_file($_FILES['image']['tmp_name'], SERVER_DISH_IMAGE.$_FILES['image']['name']);
-                        $sql = "UPDATE dish SET category_id=?, dish=?, dish_detail=?, image=?, added_on=? WHERE id=?";
-                        $stmt = mysqli_stmt_init($conn);
-
-                        if (!mysqli_stmt_prepare($stmt, $sql)) {
-                            header("Location: ../dish.php?error=sql2error");
+                        $type = $_FILES['image']['type'];
+                        if($type != 'image/jpeg' && $type != 'image/png'){
+                            header('Location: ../dish.php?invalid-file-format');
                             exit();
                         } else {
-                            mysqli_stmt_bind_param($stmt, "ssssss", $catId, $name, $dishDetail, $img, $added_on, $id);
-                            mysqli_stmt_execute($stmt);
-                            header("Location: ../dish.php?status=successful");
-                            exit();
+                            $img = rand(111111111, 999999999).'_'.$_FILES['image']['name'];
+                            move_uploaded_file($_FILES['image']['tmp_name'], SERVER_DISH_IMAGE.$img);
+                            $oldImgRow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT image FROM dish WHERE id='$id'"));
+                            $oldImg = $oldImgRow['image'];
+                            
+                            if(!empty($oldImg) && is_string($oldImg)){
+                                unlink(SERVER_DISH_IMAGE.$oldImg);
+                            }                            
+                            
+                            $sql = "UPDATE dish SET category_id=?, dish=?, dish_detail=?, image=?, added_on=? WHERE id=?";
+                            $stmt = mysqli_stmt_init($conn);
+    
+                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                header("Location: ../dish.php?error=sql2error");
+                                exit();
+                            } else {
+                                mysqli_stmt_bind_param($stmt, "ssssss", $catId, $name, $dishDetail, $img, $added_on, $id);
+                                mysqli_stmt_execute($stmt);
+                                header("Location: ../dish.php?status=successful");
+                                exit();
+                            }
                         }
+                        
                     } else {
                         $sql = "UPDATE dish SET category_id=?, dish=?, dish_detail=?, added_on=? WHERE id=?";
                         $stmt = mysqli_stmt_init($conn);
