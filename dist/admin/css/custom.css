@@ -33,7 +33,7 @@ html {
   left: 0;
   bottom: 0;
   top: 38.4px;
-  z-index: 999;
+  z-index: 500;
 }
 
 .slide {
@@ -41,16 +41,29 @@ html {
 }
 
 .modal-box {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   height: fit-content;
   padding: 1.5rem;
+  z-index: 650;
 }
 
 .img-showcase {
   margin: auto;
   width: 100px;
   height: 100px;
+}
+
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 600;
 }

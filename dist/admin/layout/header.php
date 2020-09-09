@@ -59,6 +59,7 @@ if($currentPath == '' || $currentPath == 'index.php') {
     <title><?php if($pageTitle !== ''){ echo $pageTitle ;} else{ echo SITE_NAME ;}?></title>
   </head>
   <body class="h-full bg-gray-300">
+    <div class="wrapper-full"></div>
     <header class="flex justify-between bg-orange-200 shadow-lg z-30 sticky top-0">
       <div class="burger" onclick="slideIn()">
         <div class="line"></div>

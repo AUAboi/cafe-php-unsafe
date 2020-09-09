@@ -19,11 +19,23 @@ function slideIn() {
   nav.classList.toggle("sm:-translate-x-full");
 }
 
-function showModal(id) {
+
+function overlay() {
+  const overlay = document.querySelector(".wrapper-full");
+  overlay.classList.toggle("overlay");
+
+}
+
+function showModal(id, name) {
+  overlay();
   const modal = document.querySelector(".modalBox");
   const link = document.querySelector(".del-link");
+  const msg = document.querySelector(".msg");
+  msg.innerHTML = `
+    <p class="msg">Do you really want to delete ${name}</p>
+  `
   link.innerHTML = `
-    <a href="?id=${id}?>&type=delete" class="del-link text-green-500">Confirm</a>
+    <a href="?id=${id}?>&type=delete">Confirm</a>
   `;
   modal.classList.toggle("hidden");
 }

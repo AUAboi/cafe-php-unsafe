@@ -2,26 +2,6 @@
 include_once "layout/header.php";
 
 
-if(isset($_GET['action']) && isset($_GET['id']) && $_GET['id'] > 0) {
-    $showPrompt = true;
-    $id = $_GET['id'];
-    $sql = "SELECT category FROM category WHERE id=$id";
-    $result = mysqli_query($conn, $sql);
-    $rowResult = mysqli_fetch_assoc($result);
-    $catName = $rowResult['category'];
-
-    //ONCE JS IMPLEMENTATION IS COMPLETE FOR MODAL, PRINT DISH NAMES TOO
-
-    // $sql2 = "SELECT dish FROM dish WHERE id='$id'";
-    // $result2 = mysqli_query($conn, $sql2);
-    // $rowResult2 = mysqli_fetch_assoc($result2);
-    // for($i = 0; $i < count($rowResult2['dish']); $i++){
-    //     $dishName = $rowResult2['dish'][$i];
-
-    // }
-    
-}
-
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id'] > 0){
 	$type = mysqli_real_escape_string($conn, $_GET['type']);
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
@@ -64,33 +44,12 @@ $res = mysqli_query($conn, $sql);
            
         </div>
     </div>
-    <div class="mt-4 p-2 shadow-lg table-responsive bg-white">
-    <?php
-        // Make this in JS
-        if(isset($showPrompt)) {
-            if($showPrompt) {
-            ?>
-            <div class="text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50">
-                <p>Do you really want to delete <span class="font-bold"><?php echo $catName;?></span> category?</p>
-                <p>All dishes within this category will also be deleted</p>
-                <div class="text-center p-1">
-                    <span class="text-green-600 p-2 m-4 font-bold">
-                        <a href="?id=<?php echo $id?>&type=delete">Confirm</a>
-                    </span>
-                    <span class="text-red-600 p-2 m-4 font-bold">
-                        <a href="categories.php">Deny</a>
-                    </span>
-                </div>
-            </div>
-            <?php
-            }
-        }
-    ?>
-        <div class="modalBox text-center absolute bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50 hidden">
-            <p>Do you really want to delete this category?</p>
-            <div class="">
-                <a class="del-link text-green-500">Confirm</a>
-                <a href="categories.php" class="font-bold text-red-500">Deny</a>
+    <div class="my-4 p-2 shadow-lg table-responsive bg-white">
+        <div class="modalBox text-center bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50 hidden">
+            <p class="msg">Do you really want to delete this category?</p>
+            <div class="m-2 p-2">
+                <a class="del-link text-white p-1 m-4 bg-green-500">Confirm</a>
+                <button class="font-bold p-1 m-4 focus:outline-none text-white bg-red-500" onclick="showModal()">Deny</button>
             </div>
         </div>
         <table 
@@ -128,7 +87,7 @@ $res = mysqli_query($conn, $sql);
                 <td class="text-center p-3">
                     <?php 
                         $status = $row['status'];
-                       $row_id = $row['id'];
+                        $row_id = $row['id'];
                         if($status == 1) {
                             ?>
                             <span class='mr-2 p-1 rounded-md bg-green-400 hover:bg-green-500'>
@@ -160,13 +119,9 @@ $res = mysqli_query($conn, $sql);
                     <!-- Known Errors
                         - deleting categories effect on dish 
                     -->
-                    <!-- <span class="mr-2 p-1 text-red-600 hover:text-red-700">
-                        <a href="?id=<?php echo $row['id']?>&action=delete">
-                            <i class="fas fa-trash fa-2x"></i>
-                        </a>
-                    </span> -->
-                    <span class="mr-2 p-1 text-red-600 hover:text-red-700">
-                        <button onclick="showModal(<?php echo $row_id ?>)">
+                    
+                    <span class="mr-2 text-red-600 hover:text-red-700">
+                        <button class="focus:outline-none" onclick="showModal(<?php echo $row_id ?>, '<?php echo $row['category'] ?>')">
                             <i class="fas fa-trash fa-2x"></i>
                         </button>
                     </span>

@@ -35,6 +35,13 @@ $res = mysqli_query($conn, $sql);
         </div>
     </div>
     <div class="mt-4 p-2 shadow-lg table-responsive bg-white">
+        <div class="modalBox text-center bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50 hidden">
+            <p class="msg">Do you really want to delete this?</p>
+            <div class="m-2 p-2">
+                <a class="del-link text-white p-1 m-4 bg-green-500">Confirm</a>
+                <button class="font-bold p-1 m-4 focus:outline-none text-white bg-red-500" onclick="showModal()">Deny</button>
+            </div>
+        </div>
         <table 
             id="table-main" 
             data-toggle="table"
@@ -98,10 +105,10 @@ $res = mysqli_query($conn, $sql);
                             <i class="fas fa-edit fa-2x"></i>
                         </a>
                     </span>
-                    <span class="mr-2 p-1 text-red-600 hover:text-red-700">
-                        <a href="?id=<?php echo $row['id']?>&action=delete">
+                    <span class="mr-2 p-1 text-red-600 focus:outline-none hover:text-red-700">
+                        <button onclick="showModal(<?php echo $row_id ?>, '<?php echo $row['dish'] ?>')">
                             <i class="fas fa-trash fa-2x"></i>
-                        </a>
+                        </button>
                     </span>
                 </div>        
                 </td>
