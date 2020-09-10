@@ -47,9 +47,10 @@ $res = mysqli_query($conn, $sql);
     <div class="my-4 p-2 shadow-lg table-responsive bg-white">
         <div class="modalBox text-center bg-gray-300 modal-box m-auto tracking-wider p-2 shadow-lg z-50 hidden">
             <p class="msg">Do you really want to delete this category?</p>
+            <p class="dishes"></p>
             <div class="m-2 p-2">
                 <a class="del-link text-white p-1 m-4 bg-green-500">Confirm</a>
-                <button class="font-bold p-1 m-4 focus:outline-none text-white bg-red-500" onclick="showModal()">Deny</button>
+                <button class="font-bold p-1 m-4 focus:outline-none text-white bg-red-500" onclick="clearModal()">Deny</button>
             </div>
         </div>
         <table 
@@ -121,7 +122,7 @@ $res = mysqli_query($conn, $sql);
                     -->
                     
                     <span class="mr-2 text-red-600 hover:text-red-700">
-                        <button class="focus:outline-none" onclick="showModal(<?php echo $row_id ?>, '<?php echo $row['category'] ?>')">
+                        <button class="focus:outline-none" onclick="showModal(<?php echo $row_id ?>, '<?php echo $row['category'] ?>', true)">
                             <i class="fas fa-trash fa-2x"></i>
                         </button>
                     </span>

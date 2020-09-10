@@ -39,7 +39,7 @@ $res = mysqli_query($conn, $sql);
             <p class="msg">Do you really want to delete this?</p>
             <div class="m-2 p-2">
                 <a class="del-link text-white p-1 m-4 bg-green-500">Confirm</a>
-                <button class="font-bold p-1 m-4 focus:outline-none text-white bg-red-500" onclick="showModal()">Deny</button>
+                <button class="font-bold p-1 m-4 focus:outline-none text-white bg-red-500" onclick="clearModal()">Deny</button>
             </div>
         </div>
         <table 
@@ -78,7 +78,7 @@ $res = mysqli_query($conn, $sql);
                 <td class="text-center p-3">
                     <?php 
                         $status = $row['status'];
-                       $row_id = $row['id'];
+                        $row_id = $row['id'];
                         if($status == 1) {
                             ?>
                             <span class="mr-2 p-1 rounded-md bg-green-400 hover:bg-green-500">
@@ -106,7 +106,7 @@ $res = mysqli_query($conn, $sql);
                         </a>
                     </span>
                     <span class="mr-2 p-1 text-red-600 focus:outline-none hover:text-red-700">
-                        <button onclick="showModal(<?php echo $row_id ?>, '<?php echo $row['dish'] ?>')">
+                        <button onclick="showModal(<?php echo $row_id ?>, '<?php echo $row['dish'] ?>', false)">
                             <i class="fas fa-trash fa-2x"></i>
                         </button>
                     </span>
