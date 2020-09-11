@@ -29,7 +29,7 @@ function overlay() {
 
 function loadDishes(catId) {
   var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'http://localhost/cafe/dist/admin/ajax/dishnames.php?category-id=' + catId, true);
+  xhr.open('GET', '/cafe/dist/admin/ajax/dishnames.php?category-id=' + catId, true);
 
   xhr.onload = function () {
     if (this.status == 200) {
@@ -83,4 +83,51 @@ function showModal(id, name, category) {
   if (category) {
     loadDishes(id);
   }
+}
+
+
+function loadStatus(catId, statusSpan) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/cafe/dist/admin/ajax/categorystatus.php?category-id=' + catId, true);
+
+  xhr.onload = function () {
+    if (this.status == 200) {
+      var statData = JSON.parse(this.responseText);
+      let output = ''
+      output += statData[0].status
+      var button = statusSpan.firstElementChild;
+      if (output == 1) {
+        button.innerText = "Active"
+      } else if (output == 0) {
+        button.innerText = "Deactive"
+      } else {
+        button.innerText = "NA"
+      }
+    }
+  }
+  xhr.send();
+}
+
+function showStatus() {
+
+  var statuses = document.querySelectorAll('.status');
+  statuses.forEach((status) => {
+    var catId = status.id;
+    loadStatus(catId, status);
+  })
+}
+
+setTimeout(showStatus, 1000);
+setInterval(showStatus, 4000);
+
+function changeStatus(id, status) {
+  var status = document.getElementById(id);
+  status.classList.toggle("active");
+  status.classList.toggle("deactive");
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', '/cafe/dist/admin/ajax/changestatus.php?id=' + id + '&status=' + status, true);
+
+  xhr.send()
+  setTimeout(showStatus, 2000)
 }

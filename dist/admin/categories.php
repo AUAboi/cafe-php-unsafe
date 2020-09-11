@@ -88,26 +88,18 @@ $res = mysqli_query($conn, $sql);
                 <td class="text-center p-3">
                     <?php 
                         $status = $row['status'];
-                        $row_id = $row['id'];
-                        if($status == 1) {
-                            ?>
-                            <span class='mr-2 p-1 rounded-md bg-green-400 hover:bg-green-500'>
-                                <a href='?type=deactive&id=<?php echo $row_id?>'>
-                                    Active
-                                </a>
-                            </span>
-                        <?php
+                        if($status == 1){
+                            $stat = 'active';
                         } else {
-                            ?>
-                            <span class="mr-2 p-1 rounded-md bg-red-600 hover:bg-red-700">
-                                <a href='?type=active&id=<?php echo $row_id?>'>
-                                    Deactive
-                                </a>
-                            </span>
-                       <?php 
-                            }
-                       ?>
+                            $stat = 'deactive';
+                        }
+                        $row_id = $row['id']; ?>
                     
+                        <span id="<?php echo $row_id ?>" class="status mr-2 p-1 rounded-md <?php echo $stat ?>">
+                            <button onclick="changeStatus('<?php echo $row_id ?>', '<?php echo $stat ?>')">
+                                Active
+                            </button>
+                        </span>
                 </td>
                 
                 <td class="text-center">

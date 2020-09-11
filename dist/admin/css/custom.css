@@ -67,3 +67,17 @@ html {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 600;
 }
+
+.active {
+  background-color: #68d391;
+}
+.active:hover {
+  background-color: #48bb78;
+}
+
+.deactive {
+  background-color: #fc8181;
+}
+.deactive:hover {
+  background-color: #f56565;
+}
