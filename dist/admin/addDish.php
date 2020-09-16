@@ -56,11 +56,23 @@ $categories = mysqli_query($conn, "SELECT * FROM category WHERE status='1' ORDER
         <input class="m-3 p-2 rounded-md bg-gray-200" type="file" placeholder="Dish Image" required name="image"><br>
         <label class="m-3 p-2 text-2xl" for="name">Dish Details</label><br>
         <textarea class="m-3 p-2 rounded-md bg-gray-200 resize-none" type="text" placeholder="Write Dish Details" name="details"></textarea><br>
-        <input class="m-3 p-2 cursor-pointer bg-orange-400 hover:bg-orange-500 rounded-md" type="submit" name="submit">
+        <div id="attribute-box">
+            <div class="flex justify-around">
+                <div>
+                    <label for="attribute">Dish Attribute</label>
+                    <input class="m-3 p-2 rounded-md bg-gray-200" type="text" placeholder="Write Dish Attribute" required name="attribute[]">
+                </div>
+                <div>
+                    <input class="m-3 p-2 rounded-md bg-gray-200" type="text" placeholder="Write Price" required name="price[]">
+                </div>
+            </div>
+        </div>
+        <button class="m-3 p-2 cursor-pointer bg-orange-400 hover:bg-orange-500 rounded-md" type="submit" name="submit">Submit</button>
+        <button class="m-3 p-2 cursor-pointer bg-orange-400 hover:bg-orange-500 rounded-md" type="button" onclick="addMore()">Add More</button>
+        <button id="remove-btn" class="m-3 p-2 cursor-pointer bg-orange-400 hover:bg-orange-500 rounded-md hidden" type="button" onclick="remove()">Remove</button>
         <div class="p-2 font-bold <?php if($error){ echo "text-red-600"; } else{ echo "text-green-600"; } ?>">
             <?php if(isset($msg)){
-                echo $msg;
-                
+                echo $msg; 
             }
             ?>
         </div>

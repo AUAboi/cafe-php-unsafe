@@ -78,7 +78,7 @@ function showModal(id, name, category) {
     </p>
   `
   link.innerHTML = `
-    <a href="?id=${id}?>&type=delete">Confirm</a>
+    <a href="?id=${id}&type=delete">Confirm</a>
   `;
   if (category) {
     loadDishes(id);
@@ -121,9 +121,9 @@ setTimeout(showStatus, 1000);
 setInterval(showStatus, 4000);
 
 function changeStatus(id, status) {
-  var status = document.getElementById(id);
-  status.classList.toggle("active");
-  status.classList.toggle("deactive");
+  var stat = document.getElementById(id);
+  stat.classList.toggle("active");
+  stat.classList.toggle("deactive");
 
   var xhr = new XMLHttpRequest();
   xhr.open('GET', '/cafe/dist/admin/ajax/changestatus.php?id=' + id + '&status=' + status, true);

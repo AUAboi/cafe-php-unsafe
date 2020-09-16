@@ -1,8 +1,8 @@
 <?php   
     if(isset($_POST['submit'])){
-        if(isset($_POST['name']) && $_POST['name'] !== '' && isset($_POST['category']) && $_POST['category'] !== '' && isset($_POST['details']) && $_POST['details'] !== ''){
+        if(isset($_POST['name']) && $_POST['name'] !== '' && isset($_POST['category']) && $_POST['category'] !== '' && isset($_POST['details']) && $_POST['details'] !== '' && isset($_POST['attribute']) && $_POST['attribute'] !== ''){
             require "connection.inc.php";
-            require "constant.inc.php";
+            require "constant.inc.php"; 
             $name = $_POST['name'];
             $catId = $_POST['category'];
             $dishDetail = $_POST['details'];
@@ -10,7 +10,8 @@
             $stmt = mysqli_stmt_init($conn);
             $added_on = date('Y-m-d');
             $type = $_FILES['image']['type'];
-            
+            $attributeArr = $_POST['attribute'];
+            $priceArr = $_POST['price'];
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("Location: ../addDish.php?error=sql1error");
                 exit();
@@ -40,6 +41,22 @@
                         } else {
                             mysqli_stmt_bind_param($stmt, "sssss", $catId, $name, $dishDetail, $img, $added_on);
                             mysqli_stmt_execute($stmt);
+                            $dishId = mysqli_insert_id($conn);
+                            foreach($attributeArr as $key=>$val) {
+                                $attribute = $val;
+                                $price = $priceArr[$key];
+                                $detailSQL = "INSERT INTO dish_details (dish_id, attribute, price, added_on) VALUES (?, ?, ?, ?)";
+                                
+                                $stmt = mysqli_stmt_init($conn);
+                                if(!mysqli_stmt_prepare($stmt, $detailSQL)) {
+                                    header("Location: ../addDish.php?error=sql3error");
+                                    exit();
+                                } else {
+                                    mysqli_stmt_bind_param($stmt, "ssss", $dishId, $attribute, $price, $added_on);
+                                    mysqli_stmt_execute($stmt);
+                                }
+                            }
+
                             header("Location: ../addDish.php?status=successful");
                             exit();
                         }
@@ -49,7 +66,7 @@
             }
             mysqli_stmt_close($stmt);
             mysqli_close($conn);
-        } else {
+        } els0e {
             header('Location: ../addDish.php?error=empty-fields');
             exit();
         }

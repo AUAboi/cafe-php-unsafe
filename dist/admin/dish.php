@@ -1,8 +1,8 @@
 <?php 
 include_once "layout/header.php";
 
-if(isset($_GET['action']) && $_GET['action']!=='' && isset($_GET['id']) && $_GET['id'] > 0){
-	$type = $_GET['action'];
+if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id'] > 0){
+	$type = $_GET['type'];
 	$id = mysqli_real_escape_string($conn, $_GET['id']);
     
     if($type =='delete'){

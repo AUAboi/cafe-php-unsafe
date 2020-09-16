@@ -96,8 +96,8 @@ $res = mysqli_query($conn, $sql);
                         $row_id = $row['id']; ?>
                     
                         <span id="<?php echo $row_id ?>" class="status mr-2 p-1 rounded-md <?php echo $stat ?>">
-                            <button onclick="changeStatus('<?php echo $row_id ?>', '<?php echo $stat ?>')">
-                                Active
+                            <button class="focus:outline-none" onclick="changeStatus('<?php echo $row_id ?>', '<?php echo $stat ?>')">
+                                
                             </button>
                         </span>
                 </td>
