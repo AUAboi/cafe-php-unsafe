@@ -66,12 +66,12 @@
             }
             mysqli_stmt_close($stmt);
             mysqli_close($conn);
-        } els0e {
+        } else {
             header('Location: ../addDish.php?error=empty-fields');
             exit();
         }
     } else {
-        header('Location: ../addDish.php');
+        header('Location: ../addDish.php?error');
         exit();
     }
 ?>

@@ -10,6 +10,9 @@
             $sql = "SELECT * FROM dish WHERE dish=? AND id!=?";
             $stmt = mysqli_stmt_init($conn);
             $added_on = date('Y-m-d');
+            $attributeArr = $_POST['attribute'];
+            $priceArr = $_POST['price'];            
+            $dishDetailsId = $_POST['dish_details_id'];
             
             
             if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -66,6 +69,33 @@
                         } else {
                             mysqli_stmt_bind_param($stmt, "sssss", $catId, $name, $dishDetail, $added_on, $id);
                             mysqli_stmt_execute($stmt);
+
+                            foreach($attributeArr as $key=>$val) {
+                                $attribute = $val;
+                                $price = $priceArr[$key];
+                                if(isset($dishDetailsId[$key])){
+                                    $detailSQL = "UPDATE dish_details SET attribute=?, price=? WHERE id=?";
+                                    $stmt = mysqli_stmt_init($conn);
+                                    if(!mysqli_stmt_prepare($stmt, $detailSQL)) {
+                                        header("Location: ../dish.php?error=sql3error");
+                                        exit();
+                                    } else {
+                                        mysqli_stmt_bind_param($stmt, "sss", $attribute, $price, $dishDetailsId[$key]);
+                                        mysqli_stmt_execute($stmt);
+                                    }
+                                }else {
+                                    $detailSQL = "INSERT INTO dish_details (dish_id, attribute, price, added_on) VALUES (?, ?, ?, ?)";                                    
+                                    $stmt = mysqli_stmt_init($conn);
+                                    if(!mysqli_stmt_prepare($stmt, $detailSQL)) {
+                                        header("Location: ../dish.php?error=sql4error");
+                                        exit();
+                                    } else {
+                                        mysqli_stmt_bind_param($stmt, "ssss", $id, $attribute, $price, $added_on);
+                                        mysqli_stmt_execute($stmt);
+                                    }
+                                }
+                            }
+
                             header("Location: ../dish.php?status=successful");
                             exit();
                         }    
