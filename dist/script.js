@@ -1,10 +1,3 @@
-function showNav() {
-  const nav = document.querySelector(".nav-links");
-  const orderBtn = document.querySelector(".order-button");
-  nav.classList.toggle("active");
-  orderBtn.classList.toggle("active");
-}
-
 //Admin  Page
 function showLogout() {
   const trigger = document.querySelector(".trigger");

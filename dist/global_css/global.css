@@ -1,7 +1,11 @@
 :root {
   /* --primary-color: #ec7c32; */
-  --primary-color: rgb(239,169,27);
+  --primary-color: rgb(239, 169, 27);
+  --secondary-color: rgb(255, 208, 53);
   --light-color: #7b9e89;
+  --dark-color: #101820ff;
+  --head-font: "MuseoModerno", cursive;
+  --body-font: "Poppins", sans-serif;
 }
 
 html,
@@ -10,10 +14,26 @@ body {
   height: 100%;
 }
 
+.fancy-font {
+  font-family: var(--head-font);
+}
+
+.general-font {
+  font-family: var(--body-font);
+}
+
 .bg-orange {
   background-color: var(--primary-color);
 }
 
 .bg-light-color {
   background-color: var(--light-color);
+}
+
+.black-text {
+  color: var(--dark-color);
+}
+
+.black-bg {
+  background-color: var(--dark-color);
 }

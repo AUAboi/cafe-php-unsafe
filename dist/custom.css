@@ -15,6 +15,25 @@
   border-bottom: solid black 2px;
 }
 
+.burger-active .line1 {
+  transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.burger-active .line2 {
+  opacity: 0;
+}
+
+.burger-active .line3 {
+  transform: rotate(45deg) translate(-5px, -5px);
+}
+/* Deals Section */
+
+.deals-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 4rem;
+}
+
 @media screen and (max-width: 639px) {
   .nav-links {
     display: none;
@@ -27,6 +46,11 @@
     margin: 20px;
   }
 
+  .burger {
+    left: 20px;
+    top: 20px;
+  }
+
   .active {
     display: block;
     animation: slideOut 250ms forwards;
@@ -34,7 +58,7 @@
 
   @keyframes slideOut {
     to {
-      transform: translateY(0%);
+      transform: translateY(20%);
     }
   }
 }
